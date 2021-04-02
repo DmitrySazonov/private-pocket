@@ -19,13 +19,13 @@ public class RecordStorageService {
 
   public Record storeFile(String repository, MultipartFile file) throws IOException {
     String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-    Record FileDB = new Record(repository, RecordType.FILE, null, java.time.LocalDateTime.now(), fileName, file.getContentType(), file.getBytes());
-    return recordRepository.save(FileDB);
+    Record record = new Record(repository, RecordType.FILE, null, java.time.LocalDateTime.now(), fileName, file.getContentType(), file.getBytes());
+    return recordRepository.save(record);
   }
 
   public Record storeUrl(String repository, String url) throws IOException {
-    Record FileDB = new Record(repository, RecordType.URL, url, java.time.LocalDateTime.now(), null, null, null);
-    return recordRepository.save(FileDB);
+    Record record = new Record(repository, RecordType.URL, url, java.time.LocalDateTime.now(), null, null, null);
+    return recordRepository.save(record);
   }
 
   public Record getRecord(String id) {
