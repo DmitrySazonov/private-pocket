@@ -15,6 +15,7 @@ public class Record {
 
   private String repository;
   private RecordType recordType;
+  @Lob
   private String url;
   private LocalDateTime createDate;
 
