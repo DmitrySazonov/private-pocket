@@ -24,7 +24,7 @@ public class RecordStorageService {
   }
 
   public Record storeUrl(String repository, String url) throws IOException {
-    Record FileDB = new Record(repository, RecordType.FILE, url, java.time.LocalDateTime.now(), null, null, null);
+    Record FileDB = new Record(repository, RecordType.URL, url, java.time.LocalDateTime.now(), null, null, null);
     return recordRepository.save(FileDB);
   }
 
@@ -33,6 +33,6 @@ public class RecordStorageService {
   }
   
   public List<Record> getAllRecordsByRepository(String repository) {
-    return recordRepository.findByRepository(repository);
+    return recordRepository.findByRepositorySortByCreateDate(repository);
   }
 }
