@@ -7,5 +7,5 @@ import java.util.List;
 
 @Repository
 public interface RecordRepository extends JpaRepository<Record, String> {
-    List<Record> findByRepository(String repository);
+    List<Record> findByRepositoryOrderByCreateDate(String repository);
 }

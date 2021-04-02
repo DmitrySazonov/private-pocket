@@ -33,6 +33,6 @@ public class RecordStorageService {
   }
   
   public List<Record> getAllRecordsByRepository(String repository) {
-    return recordRepository.findByRepository(repository);
+    return recordRepository.findByRepositoryOrderByCreateDate(repository);
   }
 }

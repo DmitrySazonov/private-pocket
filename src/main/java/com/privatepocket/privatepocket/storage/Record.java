@@ -34,6 +34,9 @@ public class Record {
     this.data = data;
   }
 
+  public Record() {
+  }
+
   public String getId() {
     return id;
   }
