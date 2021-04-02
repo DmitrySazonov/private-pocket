@@ -34,18 +34,23 @@
 
 <form action="/">
     <div class="form-row align-items-center">
+       [#if !(name??)]
         <div class="col-sm-5 my-1">
             <label class="sr-only" for="name">Name</label>
-            <input type="text" class="form-control mb-2" id="name" placeholder="My first pocket" name="name" value="${name!}">
-            [#if !(name??)]
+            <input type="text" class="form-control mb-2" id="name" placeholder="Input pocket name" name="name" value="${name!}">
                 <script>
                     document.getElementById("name").focus();
                 </script>
-            [/#if]
         </div>
         <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary mb-2">Go</button>
+                <button type="submit" class="btn btn-primary mb-2">Create</button>
         </div>
+       [#else]
+         <div class="col-sm-5 my-1">
+            <label class="sr-only" for="name">Name</label>
+            <input type="text" class="form-control mb-2" id="name" placeholder="Input pocket name" name="name" value="${name!}" readonly>
+        </div>
+       [/#if]
     </div>
 </form>
 
@@ -59,13 +64,12 @@
         [#list records as record]
         <tr>
             <td>
-                <a href="${record.url}">${record.url}</a>
+                <h6><a href="${record.url}" target="_blank">${record.url}</a></h6>
             </td>
         </tr>
         [/#list]
 
     </table>
-
 </div>
 
 
@@ -73,7 +77,7 @@
     <div class="form-row align-items-center">
         <div class="col-sm-5 my-1">
             <label class="sr-only" for="name">Name</label>
-            <input type="text" class="form-control mb-2" id="url" placeholder="My first url" name="url">
+            <input type="text" class="form-control mb-2" id="url" placeholder="Input url" name="url">
             [#if name??]
                 <script>
                     document.getElementById("url").focus();
@@ -81,7 +85,7 @@
             [/#if]
         </div>
         <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary mb-2">Go</button>
+            <button type="submit" class="btn btn-primary mb-2">Save</button>
         </div>
     </div>
 </form>
