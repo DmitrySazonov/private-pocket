@@ -64,7 +64,11 @@
         [#list records as record]
         <tr>
             <td>
+            [#if record.url?starts_with("http://") || record.url?starts_with("https://")]
                 <h6><a href="${record.url}" target="_blank">${record.url}</a></h6>
+            [#else]
+                <h6>${record.url}</h6>
+            [/#if]
             </td>
         </tr>
         [/#list]
@@ -77,7 +81,7 @@
     <div class="form-row align-items-center">
         <div class="col-sm-5 my-1">
             <label class="sr-only" for="name">Name</label>
-            <input type="text" class="form-control mb-2" id="url" placeholder="Input url" name="url">
+            <input type="text" class="form-control mb-2" id="url" placeholder="Input url or text" name="url">
             [#if name??]
                 <script>
                     document.getElementById("url").focus();
