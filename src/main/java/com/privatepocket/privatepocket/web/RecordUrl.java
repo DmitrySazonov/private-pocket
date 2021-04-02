@@ -3,6 +3,9 @@ package com.privatepocket.privatepocket.web;
 public class RecordUrl {
     String url;
 
+    public RecordUrl() {
+    }
+
     public String getUrl() {
         return url;
     }
