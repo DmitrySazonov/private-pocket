@@ -35,4 +35,8 @@ public class RecordStorageService {
   public List<Record> getAllRecordsByRepository(String repository) {
     return recordRepository.findByRepositoryOrderByCreateDate(repository);
   }
+
+  public void deleteRecord(String id){
+    recordRepository.deleteById(id);
+  }
 }

@@ -37,6 +37,12 @@ public class IndexController {
         return "index";
     }
 
+    @RequestMapping(value = "/{pocket}/{id}", method = RequestMethod.GET)
+    public View pocketDelete(@PathVariable String pocket, @PathVariable String id, Model model) {
+        service.deleteRecord(id);
+        return new RedirectView("/{pocket}");
+    }
+
     @RequestMapping(value = "/{pocket}", method = RequestMethod.POST)
     public View pocketAdd(@PathVariable String pocket, @RequestParam String url, Model model) throws IOException {
         service.storeUrl(pocket, url);

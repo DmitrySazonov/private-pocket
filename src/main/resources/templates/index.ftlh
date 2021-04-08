@@ -20,12 +20,12 @@
     <style>
 
         body {
-            padding: 1em;
-            font-family: monospace;
-            font-size: small;
-            background-image: url('/exclusive_paper.png');
-            overflow-y: scroll;
-        }
+                  padding: 1em;
+
+                  font-size: small;
+                  background-image: url('/exclusive_paper.png');
+                  overflow-y: scroll;
+              }
     </style>
 
 
@@ -50,6 +50,9 @@
             <label class="sr-only" for="name">Name</label>
             <input type="text" class="form-control mb-2" id="name" placeholder="Input pocket name" name="name" value="${name!}" readonly>
         </div>
+        <div class="col-auto my-1">
+           <button id="edit" type="button" class="btn btn-light">Edit</button>
+        </div>
        [/#if]
     </div>
 </form>
@@ -64,18 +67,20 @@
         [#list records as record]
         <tr>
             <td>
-            [#if record.url?starts_with("http://") || record.url?starts_with("https://")]
-                <h6><a href="${record.url}" target="_blank">${record.url}</a></h6>
-            [#else]
-                <h6>${record.url}</h6>
-            [/#if]
+                [#if record.url?starts_with("http://") || record.url?starts_with("https://")]
+                    <h6><a href="${record.url}" target="_blank">${record.url}</a></h6>
+                [#else]
+                    <h6>${record.url}</h6>
+                [/#if]
+
+                <td><a class="btn btn-sm btn-warning" role="button"
+                						href="/${pocket}/${record.id}">Delete</a></td>
+
             </td>
         </tr>
         [/#list]
-
     </table>
 </div>
-
 
 <form action="/${pocket}" method="post">
     <div class="form-row align-items-center">
