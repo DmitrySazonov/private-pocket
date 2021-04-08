@@ -6,7 +6,11 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.time.LocalTime.now;
@@ -38,5 +42,10 @@ public class RecordStorageService {
 
   public void deleteRecord(String id){
     recordRepository.deleteById(id);
+  }
+
+  public Map<String, Long> getAllPockets(){
+    Map<String, Long> pocketsCountMap = recordRepository.findAll().stream().collect(Collectors.groupingBy(Record::getRepository, Collectors.counting()));
+    return pocketsCountMap;
   }
 }
